@@ -7,15 +7,15 @@ $password="";
 $dbname="sozluk";
 
 
-// Veritabanı bağlantısı oluştur
+// Veritabanı bağlantısı oluşturma
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Bağlantıyı kontrol et
+// Bağlantıyı kontrol etme
 if ($conn->connect_error) {
     die(json_encode(["error" => "Veritabanı bağlantısı başarısız: " . $conn->connect_error]));
 }
 
-// Türkçe karakter sorunlarını çözmek için karakter setini ayarla
+// Türkçe karakter sorunlarını çözmek için karakter setini ayarlama
 $conn->set_charset("utf8mb4");
 
 // GET isteği ile gelen kelimeyi al
@@ -24,10 +24,10 @@ $arananKelime = isset($_GET['kelime']) ? $_GET['kelime'] : '';
 $sonuclar = [];
 
 if (!empty($arananKelime)) {
-    // SQL Injection saldırılarını önlemek için prepare statement kullan
+    // SQL Injection saldırılarını önlemek için prepare statement kullanma
     $stmt = $conn->prepare("SELECT name, description FROM dictionary WHERE name LIKE ?");
-    $searchTerm = "%" . $arananKelime . "%"; // Kelimenin başında veya sonunda olabilir
-    $stmt->bind_param("s", $searchTerm); // "s" string anlamına gelir
+    $searchTerm = "%" . $arananKelime . "%";
+    $stmt->bind_param("s", $searchTerm); 
     $stmt->execute();
     $result = $stmt->get_result();
 

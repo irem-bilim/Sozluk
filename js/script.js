@@ -15,44 +15,44 @@ document.addEventListener('DOMContentLoaded', function() {
             } else {
                 scrollToTopBtn.style.display = "none";
             }
-        }, 100); // 100 milisaniye gecikme ekle
+        }, 100);
     };
 
-    // Butona tıklandığında en üste kaydır
+    
     scrollToTopBtn.addEventListener('click', function() {
         window.scrollTo({
             top: 0,
-            behavior: 'smooth' // Yumuşak kaydırma animasyonu
+            behavior: 'smooth' 
         });
     });
 
-    aramaButon.addEventListener('click', function() { // Butona tıklanınca çalış
+    aramaButon.addEventListener('click', function() { 
         performSearch();
     });
 
-    aramaInput.addEventListener('keypress', function(event) { // Enter tuşuna basınca çalış
+    aramaInput.addEventListener('keypress', function(event) { 
         if (event.key === 'Enter') {
             performSearch();
         }
     });
     
 
-    //Arama input'u için input event listener (otomatik tamamlama) 
-    let timeout = null; // Gecikme için değişken
+    //Arama input'u için otomatik tamamlama)
+    let timeout = null; 
     aramaInput.addEventListener('input', function() {
-        clearTimeout(timeout); // Önceki zamanlayıcıyı temizle
+        clearTimeout(timeout); 
 
         const arananKelime = aramaInput.value.trim();
 
         if (arananKelime.length < 2) { // En az 2 karakter yazılınca öneri getir
             onerilerAlani.innerHTML = '';
             onerilerAlani.classList.remove('aktif');
-            sonucAlani.innerHTML = ''; // Sonuç içeriğini de temizle
+            sonucAlani.innerHTML = ''; 
             sonucAlani.style.display = 'none';
             return;
         }
 
-        // Kullanıcı yazmayı bıraktıktan sonra 300ms bekle, sonra önerileri getir
+        // Kullanıcı yazmayı bıraktıktan sonra 200ms bekle, sonra önerileri getir
         timeout = setTimeout(() => {
             fetch('oneriler_getir.php?kelime=' + encodeURIComponent(arananKelime))
                 .then(response => response.json())
@@ -63,10 +63,10 @@ document.addEventListener('DOMContentLoaded', function() {
                             const oneriDiv = document.createElement('div');
                             oneriDiv.textContent = onerilenKelime;
                             oneriDiv.addEventListener('click', function() {
-                                aramaInput.value = onerilenKelime; // Öneriye tıklayınca input'a yaz
-                                onerilerAlani.innerHTML = ''; // Önerileri gizle
+                                aramaInput.value = onerilenKelime;
+                                onerilerAlani.innerHTML = ''; // Önerileri gizleme
                                 onerilerAlani.classList.remove('aktif');
-                                performSearch(); // Otomatik olarak aramayı yap
+                                performSearch(); // Otomatik olarak aramayı yapma
                             });
                             onerilerAlani.appendChild(oneriDiv);
                         });
@@ -79,10 +79,10 @@ document.addEventListener('DOMContentLoaded', function() {
                     console.error('Öneri getirme sırasında hata oluştu:', error);
                     onerilerAlani.classList.remove('aktif');
                 });
-        }, 300); // 300 milisaniye gecikme
+        }, 200); 
     });
 
-    //Input dışına tıklayınca öneri kutusunu gizle
+    
     document.addEventListener('click', function(event) {
         if (!aramaInput.contains(event.target) && !onerilerAlani.contains(event.target)) {
             onerilerAlani.innerHTML = '';
@@ -95,8 +95,8 @@ document.addEventListener('DOMContentLoaded', function() {
         onerilerAlani.innerHTML = '';
         onerilerAlani.classList.remove('aktif');
 
-        // Her arama başlangıcında sonucAlani'nin stilini kaldır (beyazlığı ve çerçeveyi)
-        sonucAlani.innerHTML = ''; // Önceki sonuçları temizle
+        // Her arama başlangıcında sonucAlani'nin stilini kaldır (beyazlık ve çerçeve)
+        sonucAlani.innerHTML = ''; 
         sonucAlani.style.display = 'none';
 
         if (arananKelime === "") {
@@ -136,10 +136,10 @@ document.addEventListener('DOMContentLoaded', function() {
             .catch(error => {
                 console.error('Arama sırasında bir hata oluştu:', error);
                 sonucAlani.innerHTML = '<p style="color: red;">Arama sırasında bir hata oluştu. Lütfen konsolu kontrol edin.</p>';
-                sonucAlani.style.display = 'block'; // Hata durumunda da görünür yap
+                sonucAlani.style.display = 'block'; 
             });
 
-        // Arama kutusunu temizle (isteğe bağlı)
+        
         aramaInput.value = '';
     }
 });

@@ -23,8 +23,8 @@ header {
 }
 
 header h1 {
-    margin: 0; /* Başlığın dış boşluğu olmasın */
-    font-size: 2.5rem; /* Başlık yazısının boyutu */
+    margin: 0;
+    font-size: 2.5rem; 
     font-family: 'Lato', sans-serif;
 }
 
@@ -46,8 +46,8 @@ main {
 }
 
 .arama-kutusu h2 {
-    color: #581b90; /* Mavi renk başlık */
-    margin-bottom: 1rem; /* Altına boşluk */
+    color: #581b90; 
+    margin-bottom: 1rem; 
 }
 
 #aramaInput {
@@ -55,8 +55,8 @@ main {
     width: calc(100% - 130px); /* Kutu ve butonun genişliği toplamı %100'e yakın olsun */
     max-width: 400px; /* Masaüstünde çok büyümesin */
     border: 1px solid #ddd; /* Çerçeve */
-    border-radius: 35px; /* Köşeleri yuvarla */
-    font-size: 1rem; /* Yazı boyutu */
+    border-radius: 35px; 
+    font-size: 1rem; 
     margin-right: 10px; /* Butonla arasına boşluk */
     display: inline-block; /* Yan yana durmaları için */
     vertical-align: middle; /* Butonla hizalama */
@@ -64,41 +64,41 @@ main {
 }
 
 #aramaButon {
-    padding: 0.8rem 1.5rem; /* İç boşluk */
-    background-color: #9c25d2; /* Mavi arka plan */
-    color: white; /* Beyaz yazı */
-    border: none; /* Çerçevesiz */
-    border-radius: 35px; /* Köşeleri yuvarla */
-    font-size: 1rem; /* Yazı boyutu */
-    cursor: pointer; /* Fare üstüne gelince el işareti çıksın */
-    transition: background-color 0.3s ease; /* Rengi yavaş değişsin */
-    vertical-align: middle; /* Input ile hizalama */
-    box-sizing: border-box; /* Padding ve border genişliği etkilemesin */
+    padding: 0.8rem 1.5rem; 
+    background-color: #9c25d2; 
+    color: white; 
+    border: none; 
+    border-radius: 35px; 
+    font-size: 1rem; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease; 
+    vertical-align: middle; 
+    box-sizing: border-box; 
 }
 
-#aramaButon:hover { /* Fare üstüne gelince ne olsun */
-    background-color: #500b70; /* Daha koyu mavi olsun */
+#aramaButon:hover { 
+    background-color: #500b70; 
 }
 
 /* Sonuçlar bölümü */
 #sonucAlani {
     padding: 1rem;
-    background-color: #f9f9f9; /* ARKA PLANI BURADA VERECEĞİZ */
-    border: 1px dashed #ddd; /* ÇERÇEVEYİ BURADA VERECEĞİZ */
+    background-color: #f9f9f9; 
+    border: 1px dashed #ddd; 
     border-radius: 35px;
     min-height: auto;
     text-align: left;
-    display: none; /* BAŞLANGIÇTA GİZLE */
-    box-sizing: border-box; /* Padding ve border genişliği etkilemesin */
+    display: none; 
+    box-sizing: border-box; 
 }
 
-.kelime-entry { /* Her bir kelime sonucu için stil */
+.kelime-entry { 
     margin-bottom: 1.5rem;
     padding-bottom: 1.5rem;
     border-bottom: 1px dotted #ccc;
 }
 
-.kelime-entry:last-child { /* Son kelimenin altındaki çizgiyi kaldır */
+.kelime-entry:last-child { 
     border-bottom: none;
     margin-bottom: 0;
     padding-bottom: 0;
@@ -127,7 +127,7 @@ footer {
     font-size: 0.9rem;
 }
 
-/* Medya Sorguları (Media Queries) - Mobil Uyumlu Tasarım İçin */
+/* Mobil Uyumlu Tasarım İçin */
 
 /* Ekran boyutu 600px veya daha küçükse uygulanacak stiller */
 @media (max-width: 600px) {
@@ -208,22 +208,22 @@ footer {
 
 #scrollToTopBtn {
     display: none; /* Başlangıçta gizli */
-    position: fixed; /* Ekranda sabit kalsın */
-    bottom: 30px; /* Alttan 30px yukarıda */
-    right: 30px; /* Sağdan 30px içeride */
-    z-index: 99; /* Diğer elementlerin üstünde olsun */
-    border: none; /* Çerçevesiz */
-    outline: none; /* Odaklandığında çerçeve görünmesin */
-    background-color: #9c25d2; /* Arka plan rengi (arama butonuyla aynı renk) */
-    color: white; /* Yazı rengi */
-    cursor: pointer; /* Fare üstüne gelince el işareti */
-    padding: 15px; /* İç boşluk */
-    border-radius: 50%; /* Tamamen yuvarlak yap */
-    font-size: 22px; /* Ok işaretinin boyutu */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Hafif gölge */
-    transition: background-color 0.3s ease, opacity 0.3s ease; /* Renk ve görünürlük geçişi */
+    position: fixed; 
+    bottom: 30px; 
+    right: 30px; 
+    z-index: 99; 
+    border: none; 
+    outline: none; 
+    background-color: #9c25d2; 
+    color: white; 
+    cursor: pointer; 
+    padding: 15px; 
+    border-radius: 50%; 
+    font-size: 22px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    transition: background-color 0.3s ease, opacity 0.3s ease; 
 }
 
 #scrollToTopBtn:hover {
-    background-color: #500b70; /* Fare üstüne gelince rengi değişsin */
+    background-color: #500b70; 
 }
