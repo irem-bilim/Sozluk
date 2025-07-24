@@ -25,7 +25,7 @@ $sonuclar = [];
 
 if (!empty($arananKelime)) {
     // SQL Injection saldırılarını önlemek için prepare statement kullanma
-    $stmt = $conn->prepare("SELECT name, description FROM dictionary WHERE name = ? OR name LIKE ? ORDER BY CASE WHEN name = ? THEN 0 ELSE 1 END, name ASC LIMIT 10");
+    $stmt = $conn->prepare("SELECT name, description FROM dictionary WHERE name = ? OR name LIKE ? COLLATE utf8mb4_turkish_ci ORDER BY CASE WHEN name = ? THEN 0 ELSE 1 END, name COLLATE utf8mb4_turkish_ci ASC LIMIT 10");
     $searchTerm = $arananKelime . "%"; // Kelimenin başında veya sonunda olabilir
     $stmt->bind_param("sss",$arananKelime, $searchTerm, $arananKelime);
     $stmt->execute();
