@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                 aramaInput.value = onerilenKelime;
                                 onerilerAlani.innerHTML = ''; // Önerileri gizleme
                                 onerilerAlani.classList.remove('aktif');
-                                performSearch(); // Otomatik olarak aramayı yapma
+                                displayExactWordDefinition(onerilenKelime); 
                             });
                             onerilerAlani.appendChild(oneriDiv);
                         });
@@ -89,6 +89,51 @@ document.addEventListener('DOMContentLoaded', function() {
             onerilerAlani.classList.remove('aktif');
         }
     });
+
+    function displayExactWordDefinition(word) {
+        sonucAlani.innerHTML = ''; // Önceki sonuçları temizle
+        sonucAlani.style.display = 'none'; // Geçici olarak gizle
+
+        if (word === "") {
+            sonucAlani.innerHTML = '<p style="color: red;">Kelime belirtilmedi.</p>';
+            sonucAlani.style.display = 'block';
+            return;
+        }
+        
+        // Exact_match parametresi ile arama.php'ye istek gönder
+        fetch('arama.php?kelime=' + encodeURIComponent(word))
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok ' + response.statusText);
+                }
+                return response.json();
+            })
+            .then(data => {
+                sonucAlani.style.display = 'block'; // Sonuç gelince görünür yap
+
+                // Filtreleme yap: Sadece tam eşleşen kelimeyi göster
+                const exactMatch = data.find(item => item.name.toLowerCase() === word.toLowerCase());
+
+                if (exactMatch) {
+                    const kelimeDiv = document.createElement('div');
+                    kelimeDiv.classList.add('kelime-entry');
+                    kelimeDiv.innerHTML = `
+                        <h2>${exactMatch.name}</h2>
+                        <p>${exactMatch.description}</p>
+                    `;
+                    sonucAlani.appendChild(kelimeDiv);
+                } else {
+                    sonucAlani.innerHTML = `<p><strong>"${word}"</strong> kelimesi sözlükte bulunamadı.</p>`;
+                }
+            })
+            .catch(error => {
+                console.error('Kelime tanımı getirme sırasında hata oluştu:', error);
+                sonucAlani.innerHTML = '<p style="color: red;">Kelime tanımı getirme sırasında bir hata oluştu.</p>';
+                sonucAlani.style.display = 'block';
+            });
+
+        aramaInput.value = ''; // Arama kutusunu temizle
+    }
 
     function performSearch() {
         const arananKelime = aramaInput.value.trim();

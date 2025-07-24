@@ -25,9 +25,9 @@ $sonuclar = [];
 
 if (!empty($arananKelime)) {
     // SQL Injection saldırılarını önlemek için prepare statement kullanma
-    $stmt = $conn->prepare("SELECT name, description FROM dictionary WHERE name LIKE ?");
-    $searchTerm = "%" . $arananKelime . "%"; // Kelimenin başında veya sonunda olabilir
-    $stmt->bind_param("s", $searchTerm);
+    $stmt = $conn->prepare("SELECT name, description FROM dictionary WHERE name = ? OR name LIKE ? ORDER BY CASE WHEN name = ? THEN 0 ELSE 1 END, name ASC LIMIT 10");
+    $searchTerm = $arananKelime . "%"; // Kelimenin başında veya sonunda olabilir
+    $stmt->bind_param("sss",$arananKelime, $searchTerm, $arananKelime);
     $stmt->execute();
     $result = $stmt->get_result();
 
@@ -38,8 +38,7 @@ if (!empty($arananKelime)) {
     }
     $stmt->close();
 }
+echo json_encode($sonuclar); // Sonuçları JSON formatında geri döndür
 
 $conn->close();
-
-echo json_encode($sonuclar); // Sonuçları JSON formatında geri döndür
 ?>

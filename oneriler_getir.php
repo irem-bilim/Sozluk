@@ -40,6 +40,6 @@ if (!empty($kelimeParcasi)) {
     $stmt->close();
 }
 
-$conn->close();
 echo json_encode($oneriler);
+$conn->close();
 ?>
