@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 sonucAlani.style.display = 'block'; // Sonuç gelince görünür yap
 
                 // Filtreleme yap: Sadece tam eşleşen kelimeyi göster
-                const exactMatch = data.find(item => item.name.toLowerCase() === word.toLowerCase());
+                const exactMatch = data.find(item => item.name.toLowerCase('tr-TR') === word.toLowerCase('tr-TR'));
 
                 if (exactMatch) {
                     const kelimeDiv = document.createElement('div');
