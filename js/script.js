@@ -26,36 +26,21 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-<<<<<<< HEAD
     aramaButon.addEventListener('click', function() {
         performSearch();
     });
 
     aramaInput.addEventListener('keypress', function(event) {
-=======
-    aramaButon.addEventListener('click', function() { 
-        performSearch();
-    });
-
-    aramaInput.addEventListener('keypress', function(event) { 
->>>>>>> 2d6b139b25945fd5728dbc05d11736da462d4009
         if (event.key === 'Enter') {
             performSearch();
         }
     });
     
 
-<<<<<<< HEAD
     //Arama input'u için otomatik tamamlama
     let timeout = null; 
     aramaInput.addEventListener('input', function() {
         clearTimeout(timeout);
-=======
-    //Arama input'u için otomatik tamamlama)
-    let timeout = null; 
-    aramaInput.addEventListener('input', function() {
-        clearTimeout(timeout); 
->>>>>>> 2d6b139b25945fd5728dbc05d11736da462d4009
 
         const arananKelime = aramaInput.value.trim();
 
