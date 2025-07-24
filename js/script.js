@@ -185,6 +185,6 @@ document.addEventListener('DOMContentLoaded', function() {
             });
 
         
-        aramaInput.value = '';
+        /*aramaInput.value = '';*/
     }
 });
