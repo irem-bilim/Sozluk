@@ -132,7 +132,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 sonucAlani.style.display = 'block';
             });
 
-        aramaInput.value = ''; // Arama kutusunu temizle
+        /*aramaInput.value = ''; // Arama kutusunu temizle*/
     }
 
     function performSearch() {
