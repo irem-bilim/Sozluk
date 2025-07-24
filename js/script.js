@@ -26,28 +26,28 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    aramaButon.addEventListener('click', function() { // Butona tıklanınca çalış
+    aramaButon.addEventListener('click', function() {
         performSearch();
     });
 
-    aramaInput.addEventListener('keypress', function(event) { // Enter tuşuna basınca çalış
+    aramaInput.addEventListener('keypress', function(event) {
         if (event.key === 'Enter') {
             performSearch();
         }
     });
     
 
-    //Arama input'u için input event listener (otomatik tamamlama) 
-    let timeout = null; // Gecikme için değişken
+    //Arama input'u için otomatik tamamlama
+    let timeout = null; 
     aramaInput.addEventListener('input', function() {
-        clearTimeout(timeout); // Önceki zamanlayıcıyı temizle
+        clearTimeout(timeout);
 
         const arananKelime = aramaInput.value.trim();
 
-        if (arananKelime.length < 2) { // En az 2 karakter yazılınca öneri getir
+        if (arananKelime.length < 2) { 
             onerilerAlani.innerHTML = '';
             onerilerAlani.classList.remove('aktif');
-            sonucAlani.innerHTML = ''; // Sonuç içeriğini de temizle
+            sonucAlani.innerHTML = ''; 
             sonucAlani.style.display = 'none';
             return;
         }
@@ -139,7 +139,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 sonucAlani.style.display = 'block'; // Hata durumunda da görünür yap
             });
 
-        // Arama kutusunu temizle (isteğe bağlı)
+        
         aramaInput.value = '';
     }
 });
