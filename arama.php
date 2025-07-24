@@ -18,7 +18,7 @@ if ($conn->connect_error) {
 // Türkçe karakter sorunlarını çözmek için karakter setini ayarlama
 $conn->set_charset("utf8mb4");
 
-// GET isteği ile gelen kelimeyi al
+// GET isteği ile gelen kelimeyi alma
 $arananKelime = isset($_GET['kelime']) ? $_GET['kelime'] : '';
 
 $sonuclar = [];
@@ -26,8 +26,8 @@ $sonuclar = [];
 if (!empty($arananKelime)) {
     // SQL Injection saldırılarını önlemek için prepare statement kullanma
     $stmt = $conn->prepare("SELECT name, description FROM dictionary WHERE name LIKE ?");
-    $searchTerm = "%" . $arananKelime . "%";
-    $stmt->bind_param("s", $searchTerm); 
+    $searchTerm = "%" . $arananKelime . "%"; // Kelimenin başında veya sonunda olabilir
+    $stmt->bind_param("s", $searchTerm);
     $stmt->execute();
     $result = $stmt->get_result();
 
