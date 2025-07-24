@@ -12,7 +12,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 
 if ($conn->connect_error) {
     echo json_encode(["error" => "Veritabanı bağlantısı başarısız: " . $conn->connect_error]);
-    exit(); // Hata durumunda çık
+    exit();
 }
 $conn->set_charset("utf8mb4");
 $kelimeParcasi = isset($_GET['kelime']) ? $_GET['kelime'] : '';
@@ -34,7 +34,7 @@ if (!empty($kelimeParcasi)) {
 
     if ($result->num_rows > 0) {
         while($row = $result->fetch_assoc()) {
-            $oneriler[] = $row['name']; // Sadece kelimenin kendisini döndür
+            $oneriler[] = $row['name']; 
         }
     }
     $stmt->close();
