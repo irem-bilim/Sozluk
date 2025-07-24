@@ -7,7 +7,7 @@ body {
     color: #454444; /* Yazı rengi */
     font-size: 16px; /* Varsayılan font boyutu - mobil uyumluluk için iyi bir başlangıç noktası */
 
-    background-image: url('../img/arkaplan3.jpeg');
+    background-image: url('../img/arkaplan2.jpeg');
     background-size: cover;
     background-position: center center;
     background-attachment: fixed;
