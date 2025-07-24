@@ -17,6 +17,8 @@ if ($conn->connect_error) {
 
 // Türkçe karakter sorunlarını çözmek için karakter setini ayarlama
 $conn->set_charset("utf8mb4");
+$conn->query("SET NAMES 'utf8mb4' COLLATE 'utf8mb4_turkish_ci'");
+$conn->query("SET collation_connection = 'utf8mb4_turkish_ci'");
 
 // GET isteği ile gelen kelimeyi alma
 $arananKelime = isset($_GET['kelime']) ? $_GET['kelime'] : '';
