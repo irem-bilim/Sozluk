@@ -26,7 +26,7 @@ $sonuclar = [];
 if (!empty($arananKelime)) {
     // SQL Injection saldırılarını önlemek için prepare statement kullanma
     $stmt = $conn->prepare("SELECT name, description FROM dictionary WHERE name LIKE ?");
-    $searchTerm = "%" . $arananKelime . "%"; // Kelimenin başında veya sonunda olabilir
+    $searchTerm = "%" . $arananKelime; // Kelimenin başında veya sonunda olabilir
     $stmt->bind_param("s", $searchTerm);
     $stmt->execute();
     $result = $stmt->get_result();
