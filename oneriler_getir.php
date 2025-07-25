@@ -15,17 +15,13 @@ if ($conn->connect_error) {
     exit();
 }
 $conn->set_charset("utf8mb4");
-$kelimeParcasi = isset($_GET['kelime']) ? $_GET['kelime'] : '';
+$kelimeParcasi = isset($_GET['kelime']) ? $_GET['kelime'] : '';//kullanıcının arama kutusuna yazdığı kelime parçasını alıyor
 $kelimeParcasi = mb_strtoupper($kelimeParcasi, 'UTF-8'); // Öneriler için de büyük harfe çevir
 $oneriler = [];
 
 if (!empty($kelimeParcasi)) {
     // Sadece kelime başlangıcına göre arayabiliriz veya kelime içinde geçenleri de gösterebiliriz
     // 'name LIKE ?' -> kelimenin o parça ile başlaması için: $searchTerm = $kelimeParcasi . "%";
-    // 'name LIKE ?' -> kelimenin o parça ile bitmesi için: $searchTerm = "%" . $kelimeParcasi;
-    // 'name LIKE ?' -> kelimenin o parçayı içermesi için: $searchTerm = "%" . $kelimeParcasi . "%";
-
-    // Öneriler için genellikle başlangıca göre arama daha performanslıdır ve mantıklıdır
     $stmt = $conn->prepare("SELECT name FROM dictionary WHERE name LIKE ? LIMIT 10"); // İlk 10 öneriyi getir
     $searchTerm = $kelimeParcasi . "%";
     $stmt->bind_param("s", $searchTerm);

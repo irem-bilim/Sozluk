@@ -38,11 +38,11 @@ main {
 }
 
 /* Arama kutusu bölümü */
-.arama-kutusu { /* Class kullanarak genelleştirme, id yerine */
-    text-align: center; /* İçindeki her şeyi ortala */
-    margin-bottom: 2rem; /* Altına boşluk bırak */
-    padding-bottom: 1.5rem; /* İç alt boşluk */
-    border-bottom: 1px solid #eee; /* Altına ince çizgi çek */
+.arama-kutusu {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #eee;
 }
 
 .arama-kutusu h2 {
@@ -128,8 +128,6 @@ footer {
 }
 
 /*Mobil Uyumlu Tasarım İçin */
-
-/* Ekran boyutu 600px veya daha küçükse uygulanacak stiller */
 @media (max-width: 600px) {
     header h1 {
         font-size: 2rem;
@@ -145,29 +143,29 @@ footer {
     #aramaButon {
         width: 100%; /* Telefon ekranında %100 genişlik kaplasınlar */
         display: block; /* Alt alta gelsinler */
-        margin-right: 0; /* Sağdaki boşluğu sıfırla */
-        margin-bottom: 10px; /* Altlarına boşluk bırak */
+        margin-right: 0;
+        margin-bottom: 10px;
     }
 
     #aramaButon {
-        margin-top: 10px; /* Butonun üstüne boşluk bırak */
+        margin-top: 10px;
     }
 
     .kelime-entry h2 {
-        font-size: 1.5rem; /* Mobil görünümde kelime başlığını küçült */
+        font-size: 1.5rem;
     }
 }
 
-/* Daha küçük telefonlar için (örneğin 400px veya daha küçük) */
+
 @media (max-width: 400px) {
     header h1 {
         font-size: 1.8rem;
     }
     #aramaInput {
-        font-size: 0.9rem; /* Yazı fontunu daha da küçült */
+        font-size: 0.9rem;
     }
     #aramaButon {
-        font-size: 0.9rem; /* Yazı fontunu daha da küçült */
+        font-size: 0.9rem; 
         padding: 0.7rem 1.2rem;
     }
 }

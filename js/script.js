@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function() {
             fetch('oneriler_getir.php?kelime=' + encodeURIComponent(arananKelime))
                 .then(response => response.json())
                 .then(data => {
-                    onerilerAlani.innerHTML = ''; // Önceki önerileri temizle
+                    onerilerAlani.innerHTML = '';
                     if (data.length > 0) {
                         data.forEach(onerilenKelime => {
                             const oneriDiv = document.createElement('div');
@@ -90,6 +90,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    //oneriden kelime seçildiginde ya da bir kelime yazıldıgında seçilne/yazılan kelimenin anlamını gösterir
     function displayExactWordDefinition(word) {
         sonucAlani.innerHTML = ''; // Önceki sonuçları temizle
         sonucAlani.style.display = 'none'; // Geçici olarak gizle
