@@ -15,6 +15,9 @@ if ($conn->connect_error) {
     exit();
 }
 $conn->set_charset("utf8mb4");
+$conn->query("SET NAMES 'utf8mb4' COLLATE 'utf8mb4_turkish_ci'");
+$conn->query("SET collation_connection = 'utf8mb4_turkish_ci'");
+
 $kelimeParcasi = isset($_GET['kelime']) ? $_GET['kelime'] : '';//kullanıcının arama kutusuna yazdığı kelime parçasını alıyor
 $kelimeParcasi = mb_strtoupper($kelimeParcasi, 'UTF-8'); // Öneriler için de büyük harfe çevir
 $oneriler = [];
@@ -22,7 +25,7 @@ $oneriler = [];
 if (!empty($kelimeParcasi)) {
     // Sadece kelime başlangıcına göre arayabiliriz veya kelime içinde geçenleri de gösterebiliriz
     // 'name LIKE ?' -> kelimenin o parça ile başlaması için: $searchTerm = $kelimeParcasi . "%";
-    $stmt = $conn->prepare("SELECT name FROM dictionary WHERE name LIKE ? LIMIT 10"); // İlk 10 öneriyi getir
+    $stmt = $conn->prepare("SELECT name FROM dictionary WHERE name LIKE ? COLLATE utf8mb4_turkish_ci LIMIT 10");
     $searchTerm = $kelimeParcasi . "%";
     $stmt->bind_param("s", $searchTerm);
     $stmt->execute();
